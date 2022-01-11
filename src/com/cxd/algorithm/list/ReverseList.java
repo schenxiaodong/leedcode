@@ -2,8 +2,14 @@ package com.cxd.algorithm.list;
 
 /**
  * @author Administrator
+ *
+ * 项目需求 链表结构 1 -> 2 -> 3 -> 4 -> 5
+ * 将链表反转
  */
 public class ReverseList {
+    /**
+     * 定义表结构
+     */
     static class ListNode {
         int val;
         ListNode next;
@@ -14,6 +20,11 @@ public class ReverseList {
         }
     }
 
+    /**
+     * 反转函数
+     * @param head 输入的是链表的头节点
+     * @return 返回新链表的头节点
+     */
     public static ListNode iterate(ListNode head) {
         ListNode prev = null, next;
         ListNode curr = head;
@@ -23,11 +34,8 @@ public class ReverseList {
         while (curr != null) {
             // 获取下一个元素
             next = curr.next;
-            // 将 prev 赋值给curr.next
             curr.next = prev;
-            // 将 curr 赋值给 prev
             prev = curr;
-            // curr 又等于下一个值
             curr = next;
         }
         return prev;
