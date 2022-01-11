@@ -30,7 +30,7 @@ public class ReverseList {
     }
 
     /**
-     * 反转函数
+     * 反转函数- 迭代算法
      * 每一次获取当前元素，并将当前元素作为元素头进行头插法插入
      * 只是新增两个节点作为中间交换变量
      * prev 为每一次的头节点，
@@ -53,19 +53,39 @@ public class ReverseList {
         return prev;
     }
 
+    public static ListNode recursion(ListNode head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode newList = recursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newList;
+    }
+
     public static void main(String[] args) {
         ListNode node5 = new ListNode(5, null);
         ListNode node4 = new ListNode(4, node5);
         ListNode node3 = new ListNode(3, node4);
         ListNode node2 = new ListNode(2, node3);
         ListNode node1 = new ListNode(1, node2);
-        ListNode iterate = iterate(node1);
+        // 反转函数 -- 迭代算法
+        /*ListNode iterate = iterate(node1);
 
         while (iterate != null) {
             System.out.print(iterate.getVal() + " -> ");
             iterate = iterate.getNext();
+        }*/
+
+        // 反转函数 -- 递归算法
+        ListNode recursion = recursion(node1);
+        while (recursion != null) {
+            System.out.print(recursion.getVal() + " -> ");
+            recursion = recursion.getNext();
         }
 
         System.out.print("null");
     }
 }
+
+
