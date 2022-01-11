@@ -22,15 +22,18 @@ public class ReverseList {
 
     /**
      * 反转函数
+     * 每一次获取当前元素，并将当前元素作为元素头进行头插法插入
+     * 只是新增两个节点作为中间交换变量
+     * prev 为每一次的头节点，
+     * next 每次循环都指向待交换节点下一个节点，
+     * 交换节点为curr 所指向的节点
      * @param head 输入的是链表的头节点
      * @return 返回新链表的头节点
      */
     public static ListNode iterate(ListNode head) {
         ListNode prev = null, next;
         ListNode curr = head;
-        /**
-         * 1 2 3 4 5
-         */
+
         while (curr != null) {
             // 获取下一个元素
             next = curr.next;
