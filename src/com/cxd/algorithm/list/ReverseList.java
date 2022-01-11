@@ -18,6 +18,15 @@ public class ReverseList {
             this.val = val;
             this.next = next;
         }
+
+        public int getVal() {
+            return val;
+        }
+
+        public ListNode getNext() {
+            return next;
+        }
+
     }
 
     /**
@@ -51,6 +60,12 @@ public class ReverseList {
         ListNode node2 = new ListNode(2, node3);
         ListNode node1 = new ListNode(1, node2);
         ListNode iterate = iterate(node1);
-        int a = 0;
+
+        while (iterate != null) {
+            System.out.print(iterate.getVal() + " -> ");
+            iterate = iterate.getNext();
+        }
+
+        System.out.print("null");
     }
 }
