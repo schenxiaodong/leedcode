@@ -66,6 +66,6 @@ public class ReverseList {
             iterate = iterate.getNext();
         }
 
-        System.out.print("null");
+        System.out.print("null ");
     }
 }
