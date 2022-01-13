@@ -1,4 +1,4 @@
-package com.cxd.algorithm.list;
+package com.cxd.algorithm.dataStructure.list;
 
 /**
  * @author Administrator
