@@ -10,6 +10,7 @@ public class PrimeNumber {
     public static void main(String[] args) {
         int i = bruteForce(100);
         System.out.println(i);
+        System.out.println(eratosthenes(100));
     }
 
     /**
@@ -44,5 +45,32 @@ public class PrimeNumber {
             }
         }
         return true;
+    }
+
+    /**
+     * 解题方法2-埃塞法
+     * 用空间换取时间，如果值过大（空间开辟太大），就会报错
+     */
+    public static int eratosthenes(int n) {
+        // 1. 建立一个空间大小为 n+1 的boolean类型的数组，初始值都为false，即定义所有的数都为素数
+        boolean[] isPrime = new boolean[n+1];
+        // 2. 定义标志位count
+        int count = 0;
+        // 从2-n遍历
+        for (int i = 2; i <= n; i++) {
+            // 如果i为素数
+            if(!isPrime[i]) {
+                // 从 i * i 开始遍历，以temp * i的数都标记为非素数
+                // 例如， 2*2，2*3，2*4........
+                //       3*3，3*4，3*5........
+                for (int j = i * i; j <= n; j += i) {
+                    isPrime[j] = true;
+                }
+                // 当前 count + 1
+                count++;
+            }
+        }
+        // 返回素数总数
+        return count;
     }
 }
