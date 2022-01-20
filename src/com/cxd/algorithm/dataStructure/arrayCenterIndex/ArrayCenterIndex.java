@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class ArrayCenterIndex {
     public static void main(String[] args) {
         System.out.println(pivotIndex(new int[]{1, 7, 3, 6, 5, 6}));
+        System.out.println(pivotIndex2(new int[]{1, 7, 3, 6, 5, 6}));
     }
 
     /**
@@ -49,4 +50,27 @@ public class ArrayCenterIndex {
         return -1;
     }
 
+    /**
+     * 方式2
+     * 遍历左侧元素，判断2倍左侧元素 + 当前元素是否等于总和
+     * @param nums
+     * @return
+     */
+    public static int pivotIndex2(int[] nums) {
+        // 先求出数组总和
+        // 方式1，利用Arrays jdk8新特性
+        int sum = Arrays.stream(nums).sum();
+        int total = 0;
+        for (int i = 0; i < nums.length && (2 * total) <= sum; i++) {
+            // 计算 2倍左侧元素 + 当前元素是否等于总和
+            int temp = 2 * total + nums[i];
+            if(temp == sum) {
+                // 返回元素下标
+                return i;
+            }
+            // 左侧元素相加
+            total += nums[i];
+        }
+        return -1;
+    }
 }
